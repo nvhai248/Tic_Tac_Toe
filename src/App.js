@@ -96,10 +96,16 @@ export default function Game() {
 
     return (
       <li key={move}>
+      {move === currentMove ? (
+        <button>
+          You are at move #{move}{`(${row}, ${col})`}
+        </button>
+      ) : (
         <button onClick={() => jumpTo(move)}>
           {`${description} (${row}, ${col})`}
         </button>
-      </li>
+      )}
+    </li>
     );
   });
 
@@ -115,7 +121,7 @@ export default function Game() {
       <div className="game-info">
         <div>
           <button onClick={toggleSortOrder}>
-            Toggle Sort Order: {isAscending ? "Ascending" : "Descending"}
+            Toggle: {isAscending ? "Ascending" : "Descending"}
           </button>
         </div>
         <ol>{moves}</ol>
